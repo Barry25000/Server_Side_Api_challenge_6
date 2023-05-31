@@ -24,3 +24,6 @@ THEN I am again presented with current and future conditions for that city
 
 this was a very challenging assignment, really the hardest challenge to date in my opinion.
 I had trouble getting the API to work at first but then figured it out.
+
+
+![Live_Screen_Shot.png](https://github.com/Barry25000/Server_Side_Api_challenge_6/blob/main/assets/images/Live_Screen_Shot.png)
