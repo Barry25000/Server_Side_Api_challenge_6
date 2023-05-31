@@ -19,16 +19,21 @@ function forecast() {
       return response.json();
     })
     .then(function (response) {
+      const startDay = response.list[0]
       const firstDay = response.list[4];
       const secondDay = response.list[12];
       const thirdDay = response.list[20];
       const fourthDay = response.list[28];
       const fifthDay = response.list[36];
+      var iconCode = response.list[0].weather[0].icon;
+      var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+      console.log(startDay);
       displayWeather(firstDay, firstDayElement);
       displayWeather(secondDay, secondDayElement);
       displayWeather(thirdDay, thirdDayElement);
       displayWeather(fourthDay, fourthDayElement);
       displayWeather(fifthDay, fifthDayElement);
+      displayWeather(startDay, currentElement);
     });
 }
 
@@ -58,6 +63,7 @@ function logSubmit(event) {
 
     //write weather data to DOM
 function displayWeather(weatherObject, weatherElement) {
+  var iconUrl = "http://openweathermap.org/img/w/" + weatherObject.weather[0].icon + ".png";
   weatherElement.innerHTML = weatherObject.dt_txt || new Date().toLocaleDateString(); //No date, grab current date off of Local
   weatherElement.innerHTML += "<br>";
   weatherElement.innerHTML += "Temp: " + weatherObject.main.temp + " °F";
@@ -65,6 +71,8 @@ function displayWeather(weatherObject, weatherElement) {
   weatherElement.innerHTML += "Wind: " + weatherObject.wind.speed + " MPH";
   weatherElement.innerHTML += "<br>";
   weatherElement.innerHTML += "Humidity " + weatherObject.main.humidity + "%";
+  weatherElement.innerHTML +="<br>";
+  weatherElement.innerHTML += `<img src="${iconUrl}">`;
 }
 
     //Fun starts here, waiting for the search button push
