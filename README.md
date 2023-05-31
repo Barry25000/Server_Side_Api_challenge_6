@@ -26,4 +26,9 @@ this was a very challenging assignment, really the hardest challenge to date in 
 I had trouble getting the API to work at first but then figured it out.
 
 
+Live Screen Shot
 ![Live_Screen_Shot.png](https://github.com/Barry25000/Server_Side_Api_challenge_6/blob/main/assets/images/Live_Screen_Shot.png)
+
+
+Repo Screen Shot
+![Repo_Screen_Shot.png](https://github.com/Barry25000/Server_Side_Api_challenge_6/blob/main/assets/images/Repo_Screen_Shot.png)
