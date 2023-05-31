@@ -44,11 +44,11 @@ function current() {
     })
     .then(function (response) {
       const current = response;
-      console.log(response);
       displayWeather(current, currentElement);
 
     });
 }
+
     //calling functions to start the program
 function logSubmit(event) {
   event.preventDefault();
