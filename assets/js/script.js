@@ -8,7 +8,7 @@ const currentElement = document.getElementById("Current");
 const searchForm = document.querySelector(".search-form");
 
 function forecast() {
-  //fetch 5 day weather outlook
+  //fetch 5 day weather outlook from API
   fetch(
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
       city_name.value +
@@ -33,7 +33,7 @@ function forecast() {
 }
 
 function current() {
-  //fetch current weather
+  //fetch current weather from API
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
       city_name.value +
@@ -56,7 +56,7 @@ function logSubmit(event) {
   forecast();
 }
 
-    //write data to DOM
+    //write weather data to DOM
 function displayWeather(weatherObject, weatherElement) {
   weatherElement.innerHTML = weatherObject.dt_txt || new Date().toLocaleDateString(); //No date, grab current date off of Local
   weatherElement.innerHTML += "<br>";
@@ -67,5 +67,5 @@ function displayWeather(weatherObject, weatherElement) {
   weatherElement.innerHTML += "Humidity " + weatherObject.main.humidity + "%";
 }
 
-    //Fun starts here, waiting for the button push
+    //Fun starts here, waiting for the search button push
 searchForm.addEventListener("submit", logSubmit);
