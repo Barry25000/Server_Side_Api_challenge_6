@@ -63,14 +63,15 @@ function logSubmit(event) {
 
     //write weather data to DOM
 function displayWeather(weatherObject, weatherElement) {
+   
   var iconUrl = "http://openweathermap.org/img/w/" + weatherObject.weather[0].icon + ".png";
   weatherElement.innerHTML = weatherObject.dt_txt || new Date().toLocaleDateString(); //No date, grab current date off of Local
   weatherElement.innerHTML += "<br>";
-  weatherElement.innerHTML += "Temp: " + weatherObject.main.temp + " °F";
+  weatherElement.innerHTML += "Temp: " + Math.round(weatherObject.main.temp) + " °F";
   weatherElement.innerHTML += "<br>";
-  weatherElement.innerHTML += "Wind: " + weatherObject.wind.speed + " MPH";
+  weatherElement.innerHTML += "Wind: " + Math.round(weatherObject.wind.speed) + " MPH";
   weatherElement.innerHTML += "<br>";
-  weatherElement.innerHTML += "Humidity " + weatherObject.main.humidity + "%";
+  weatherElement.innerHTML += "Humidity " + Math.round(weatherObject.main.humidity) + "%";
   weatherElement.innerHTML +="<br>";
   weatherElement.innerHTML += `<img src="${iconUrl}">`;
 }
