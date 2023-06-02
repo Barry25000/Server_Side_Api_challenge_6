@@ -6,6 +6,50 @@ const fourthDayElement = document.getElementById("fourthDay");
 const fifthDayElement = document.getElementById("fifthDay");
 const currentElement = document.getElementById("Current");
 const searchForm = document.querySelector(".search-form");
+var searchHistoryElement = document.querySelector(".search-history");
+
+
+  // initialize local storage for history saves, if local storage key is abscent
+
+  let historyCheck=localStorage.getItem("history") || localStorage.setItem("history", "");
+    
+
+
+    // append search history to site
+function writeHistory () {
+
+  local_pull=localStorage.getItem("history");
+  console.log(local_pull);
+
+   const searchHistoryItem = document.createElement('a');
+   searchHistoryItem.className = "list-group-itemn list-group-item-action";
+  searchHistoryItem.textContent = local_pull;
+  searchHistoryElement.appendChild(searchHistoryItem);
+  // searchHistoryElement.className = d-block;
+}
+
+
+
+
+
+// localStorage.setItem("search", "san antonia");
+// searchHistory=localStorage.getItem("search");
+
+function saveHistory() {
+    
+  let searched_city=JSON.stringify(city_name.value);
+      
+    // local_pull=localStorage.getItem("history"); 
+        
+    // let result = local_pull.concat(searched_city);
+        
+    // localStorage.setItem("history", result);
+    localStorage.setItem("history", searched_city);
+    
+}
+
+
+
 
 function forecast() {
   //fetch 5 day weather outlook from API
@@ -27,7 +71,6 @@ function forecast() {
       const fifthDay = response.list[36];
       var iconCode = response.list[0].weather[0].icon;
       var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
-      console.log(startDay);
       displayWeather(firstDay, firstDayElement);
       displayWeather(secondDay, secondDayElement);
       displayWeather(thirdDay, thirdDayElement);
@@ -59,6 +102,8 @@ function logSubmit(event) {
   event.preventDefault();
   current();
   forecast();
+  saveHistory();
+  writeHistory();
 }
 
     //write weather data to DOM
